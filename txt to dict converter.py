@@ -1,9 +1,10 @@
-lines = []
+import json
+
+lines = {}
 with open('tube_stop_info.txt', 'r') as file:
     for line in file:
-        processed_line = line.strip()
-        lines.append(processed_line)
-        # Additional processing can be done here
+        key, value = line.strip().split('->', 1)
+        lines[key.strip()] = value.strip()
 
+print(json.dumps(lines,indent=1))
 
-print(lines)
